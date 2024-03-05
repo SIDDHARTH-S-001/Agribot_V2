@@ -3,9 +3,9 @@
 
   <arg name="move_forward_only" default="false"/>
 
-  <include file= "$(find agribot_testing_1_description)/launch/display.launch"/>
+  <!-- <include file= "$(find agribot_testing_1_description)/launch/display.launch"/>
 
-  <include file= "$(find agribot_testing_1_description)/launch/gmapping.launch"/>
+  <include file= "$(find agribot_testing_1_description)/launch/gmapping.launch"/> -->
 
   <include file="$(find agribot_testing_1_description)/launch/move_base.launch">
     <arg name="move_forward_only" value="$(arg move_forward_only)"/>
