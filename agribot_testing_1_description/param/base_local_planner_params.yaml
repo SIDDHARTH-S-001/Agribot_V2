@@ -1,16 +1,16 @@
 TrajectoryPlannerROS:
 
 # Robot Configuration Parameters
-  max_vel_x: 0.35
-  min_vel_x: -0.35
+  max_vel_x: 1.5
+  min_vel_x: -1.5
 
-  max_vel_theta:  1.4
-  min_vel_theta: -1.4
+  max_vel_theta:  3.0
+  min_vel_theta: -3.0
   min_in_place_vel_theta: 1.0 #The minimum rotational velocity allowed for the base while performing in-place rotations in radians/sec
 
-  acc_lim_x: 0.25
+  acc_lim_x: 3.0
   acc_lim_y: 0.0
-  acc_lim_theta: 0.25
+  acc_lim_theta: 6.0
 
 # Goal Tolerance Parameters
   xy_goal_tolerance: 0.05
@@ -24,7 +24,7 @@ TrajectoryPlannerROS:
    # Meter scoring set to true makes calculations based on meters and not on cells.
                       
 # Forward Simulation Parameters
-  sim_time: 2.5 #*
+  sim_time: 1 #*
   vx_samples: 50 # The number of samples to use when exploring the x velocity space
   vtheta_samples: 50 # The number of samples to use when exploring the theta velocity space
   sim_granularity: 0.025 # The step size, in meters, to take between points on a given trajectory

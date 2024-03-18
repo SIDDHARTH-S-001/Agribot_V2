@@ -1,12 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import rospy
 import numpy as np
 from sensor_msgs.msg import LaserScan
 from sensor_msgs.point_cloud2 import read_points
-from tf.transformations import euler_from_quaternion, quaternion_from_euler
+from tf.transformations import quaternion_from_euler, euler_from_quaternion
 from sklearn.neighbors import NearestNeighbors
-from geometry_msgs.msg import PoseStamped
+from geometry_msgs.msg import PoseStamped, TransformStamped
 import tf2_ros
 import tf2_geometry_msgs
 
@@ -15,19 +15,38 @@ class LidarICP:
         rospy.init_node('lidar_icp_node', anonymous=True)
         self.scan_sub = rospy.Subscriber('/scan', LaserScan, self.scan_callback)
         self.pose_pub = rospy.Publisher('/updated_pose', PoseStamped, queue_size=10)
+        self.tf_broadcaster = tf2_ros.TransformBroadcaster()
         self.tf_buffer = tf2_ros.Buffer()
         self.tf_listener = tf2_ros.TransformListener(self.tf_buffer)
         self.prev_scan = None
 
+        # Broadcast initial static transform
+        self.broadcast_initial_transform()
+
+    def broadcast_initial_transform(self):
+        initial_transform = TransformStamped()
+        initial_transform.header.stamp = rospy.Time.now()
+        initial_transform.header.frame_id = 'odom'
+        initial_transform.child_frame_id = 'base_link'
+        initial_transform.transform.translation.x = 0.0
+        initial_transform.transform.translation.y = 0.0
+        initial_transform.transform.translation.z = 0.0
+        initial_transform.transform.rotation.x = 0.0
+        initial_transform.transform.rotation.y = 0.0
+        initial_transform.transform.rotation.z = 0.0
+        initial_transform.transform.rotation.w = 1.0
+
+        self.tf_broadcaster.sendTransform(initial_transform)
+
     def scan_callback(self, scan_msg):
-        current_scan = self.laser_scan_to_point_cloud(scan_msg)
+        current_scan = self.laser_scan_to_point_cloud(scan_msg) # current_scan is an array of points
         
         if self.prev_scan is not None:
             # Apply ICP
             R, T = self.point_to_point_icp(self.prev_scan, current_scan)
             
-            # Update pose
-            self.update_pose(R, T)
+            # Update pose and broadcast the dynamic transform
+            self.update_pose_and_broadcast_transform(R, T)
         
         # Save the current scan for the next iteration
         self.prev_scan = current_scan
@@ -47,7 +66,6 @@ class LidarICP:
 
         return np.array(points)
 
-
     def point_to_point_icp(self, source, target):
         # Use Nearest Neighbors to find correspondences
         nbrs = NearestNeighbors(n_neighbors=1, algorithm='ball_tree').fit(target)
@@ -57,12 +75,13 @@ class LidarICP:
         matched_target = target[indices.flatten()]
         
         # Compute the transformation
-        R, T = self.calculate_icp_transformation(source, matched_target)
+        R, T = self.calculate_icp_transformation(source, matched_target) # prev_scan is the source and current_scan is target
 
         return R, T
 
     def calculate_icp_transformation(self, source, target):
         # Calculate the transformation between source and target using SVD
+        # prev_scan is the source and current_scan is target
         mean_source = np.mean(source, axis=0)
         mean_target = np.mean(target, axis=0)
 
@@ -78,12 +97,12 @@ class LidarICP:
 
         return R, T
 
-    def update_pose(self, R, T):
+    def update_pose_and_broadcast_transform(self, R, T):
         try:
             # Get the current robot pose from the TF tree
-            trans = self.tf_buffer.lookup_transform("map", "base_link", rospy.Time(0))
+            trans = self.tf_buffer.lookup_transform("odom", "base_link", rospy.Time(0))
             pose = PoseStamped()
-            pose.header.frame_id = "map"
+            pose.header.frame_id = "odom"
             pose.pose.position.x = trans.transform.translation.x
             pose.pose.position.y = trans.transform.translation.y
             pose.pose.position.z = trans.transform.translation.z
@@ -93,10 +112,26 @@ class LidarICP:
             pose.pose.orientation.w = trans.transform.rotation.w
 
             # Update the pose with the ICP transformation
-            transformed_pose = self.apply_icp_transformation(pose, R, T)
+            updated_pose = self.apply_icp_transformation(pose, R, T)
 
             # Publish the updated pose
-            self.pose_pub.publish(transformed_pose)
+            self.pose_pub.publish(updated_pose)
+
+            # Broadcast the dynamic transform between odom and base_link
+            transform_stamped = TransformStamped()
+            transform_stamped.header.stamp = rospy.Time.now()
+            transform_stamped.header.frame_id = 'odom'
+            transform_stamped.child_frame_id = 'base_link'
+            transform_stamped.transform.translation.x = T[0]
+            transform_stamped.transform.translation.y = T[1]
+            transform_stamped.transform.translation.z = T[2]
+            q = quaternion_from_euler(0, 0, np.arctan2(R[1, 0], R[0, 0]))
+            transform_stamped.transform.rotation.x = q[0]
+            transform_stamped.transform.rotation.y = q[1]
+            transform_stamped.transform.rotation.z = q[2]
+            transform_stamped.transform.rotation.w = q[3]
+
+            self.tf_broadcaster.sendTransform(transform_stamped)
 
         except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException):
             rospy.logwarn("Error looking up the transform. Skipping update.")
@@ -108,11 +143,11 @@ class LidarICP:
 
         # Apply the ICP transformation
         updated_pose = PoseStamped()
-        updated_pose.header.frame_id = "map"
+        updated_pose.header.frame_id = "odom"
         updated_pose.header.stamp = rospy.Time.now()
         updated_pose.pose.position.x = pose.pose.position.x + T[0]
         updated_pose.pose.position.y = pose.pose.position.y + T[1]
-        updated_pose.pose.position.z = pose.pose.position.z
+        updated_pose.pose.position.z = pose.pose.position.z + T[2]
         updated_yaw = yaw + np.arctan2(R[1, 0], R[0, 0])  # Extracting rotation from the transformation matrix
         q = quaternion_from_euler(0, 0, updated_yaw)
         updated_pose.pose.orientation.x = q[0]

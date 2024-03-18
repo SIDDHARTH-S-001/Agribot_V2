@@ -5,10 +5,8 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
-        - /Status1
-        - /RobotModel1
-        - /global_costmap1
-        - /LaserScan1
+        - /TF1
+        - /Polygon1
       Splitter Ratio: 0.5
     Tree Height: 1922
   - Class: rviz/Selection
@@ -28,7 +26,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: LaserScan
+    SyncSource: ""
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -64,7 +62,66 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        base_arm:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        base_footprint:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        l1_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        l2_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        l3_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        l4_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        l5_1_A_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        l5_1_B_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        l5_2_A_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        l5_2_B_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        l5_3_A_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        l5_3_B_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -130,13 +187,13 @@ Visualization Manager:
     - Alpha: 1
       Buffer Length: 1
       Class: rviz/Path
-      Color: 25; 255; 0
+      Color: 52; 101; 164
       Enabled: true
       Head Diameter: 0.30000001192092896
       Head Length: 0.20000000298023224
       Length: 0.30000001192092896
-      Line Style: Lines
-      Line Width: 0.029999999329447746
+      Line Style: Billboards
+      Line Width: 0.05000000074505806
       Name: global_planner
       Offset:
         X: 0
@@ -169,8 +226,8 @@ Visualization Manager:
       Head Diameter: 0.30000001192092896
       Head Length: 0.20000000298023224
       Length: 0.30000001192092896
-      Line Style: Lines
-      Line Width: 0.029999999329447746
+      Line Style: Billboards
+      Line Width: 0.05000000074505806
       Name: Path
       Offset:
         X: 0
@@ -239,6 +296,15 @@ Visualization Manager:
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
+    - Alpha: 1
+      Class: rviz/Polygon
+      Color: 0; 0; 0
+      Enabled: true
+      Name: Polygon
+      Queue Size: 10
+      Topic: /move_base/local_costmap/footprint
+      Unreliable: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -267,7 +333,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 5.080941677093506
+      Distance: 10.740219116210938
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -275,17 +341,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: -0.4899255037307739
-        Y: -0.022426020354032516
-        Z: -0.15973307192325592
+        X: -0.616163969039917
+        Y: 1.9894883632659912
+        Z: -2.479947566986084
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.5697963237762451
+      Pitch: 1.164797306060791
       Target Frame: <Fixed Frame>
-      Yaw: 4.671777725219727
+      Yaw: 4.899958610534668
     Saved: ~
 Window Geometry:
   Displays:

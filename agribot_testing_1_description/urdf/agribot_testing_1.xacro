@@ -4,11 +4,13 @@
 <xacro:include filename="$(find agribot_testing_1_description)/urdf/materials.xacro" />
 <xacro:include filename="$(find agribot_testing_1_description)/urdf/agribot_testing_1.trans" />
 <xacro:include filename="$(find agribot_testing_1_description)/urdf/agribot_testing_1.gazebo" />
+<link name="base_footprint"/>
+
 <link name="base_link">
   <inertial>
-    <origin xyz="0.07156701464120785 0.07365356482008388 0.39163104469887844" rpy="0 0 0"/>
+    <origin xyz="-0.0038264351799011153 0.0009529853587903364 0.3916310446988783" rpy="0 0 0"/>
     <mass value="33.861613005474375"/>
-    <inertia ixx="2.74751" iyy="1.628198" izz="3.065301" ixy="0.000154" iyz="-0.003471" ixz="0.001994"/>
+    <inertia ixx="1.628198" iyy="2.74751" izz="3.065301" ixy="-0.000154" iyz="-0.001994" ixz="-0.003471"/>
   </inertial>
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -25,21 +27,27 @@
   </collision>
 </link>
 
+<joint name="Rigid 10" type="fixed">
+  <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  <parent link="base_footprint"/>
+  <child link="base_link"/>
+</joint>
+
 <link name="wheel_attachment_v3_1">
   <inertial>
-    <origin xyz="0.019174718787169642 6.512305528172391e-09 -7.423677590712163e-08" rpy="0 0 0"/>
+    <origin xyz="6.512313743822773e-09 -0.01917471878716015 -7.423677496343206e-08" rpy="0 0 0"/>
     <mass value="2.8820189071853717"/>
-    <inertia ixx="0.020705" iyy="0.010501" izz="0.010501" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+    <inertia ixx="0.010501" iyy="0.020705" izz="0.010501" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
   </inertial>
   <visual>
-    <origin xyz="-0.292801 0.298347 -0.1016" rpy="0 0 0"/>
+    <origin xyz="0.375827 0.220281 -0.1016" rpy="0 0 0"/>
     <geometry>
       <mesh filename="package://agribot_testing_1_description/meshes/wheel_attachment_v3_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="steel_satin"/>
   </visual>
   <collision>
-    <origin xyz="-0.292801 0.298347 -0.1016" rpy="0 0 0"/>
+    <origin xyz="0.375827 0.220281 -0.1016" rpy="0 0 0"/>
     <geometry>
       <mesh filename="package://agribot_testing_1_description/meshes/wheel_attachment_v3_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
@@ -48,19 +56,19 @@
 
 <link name="wheel_attachment_v5_1">
   <inertial>
-    <origin xyz="0.019183969768565068 2.903729202086147e-07 -3.506957667459565e-07" rpy="0 0 0"/>
+    <origin xyz="2.9037292792466474e-07 -0.019183969768576975 -3.506957663712562e-07" rpy="0 0 0"/>
     <mass value="2.8568879657816306"/>
-    <inertia ixx="0.020703" iyy="0.0105" izz="0.0105" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+    <inertia ixx="0.0105" iyy="0.020703" izz="0.0105" ixy="0.0" iyz="0.0" ixz="-0.0"/>
   </inertial>
   <visual>
-    <origin xyz="-0.292401 -0.446406 -0.104574" rpy="0 0 0"/>
+    <origin xyz="-0.368926 0.219881 -0.104574" rpy="0 0 0"/>
     <geometry>
       <mesh filename="package://agribot_testing_1_description/meshes/wheel_attachment_v5_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="steel_satin"/>
   </visual>
   <collision>
-    <origin xyz="-0.292401 -0.446406 -0.104574" rpy="0 0 0"/>
+    <origin xyz="-0.368926 0.219881 -0.104574" rpy="0 0 0"/>
     <geometry>
       <mesh filename="package://agribot_testing_1_description/meshes/wheel_attachment_v5_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
@@ -69,19 +77,19 @@
 
 <link name="wheel_attachment_v5_2">
   <inertial>
-    <origin xyz="-0.019183615061750148 1.69434790198153e-07 4.0447718419045486e-07" rpy="0 0 0"/>
+    <origin xyz="1.6943481162545737e-07 0.01918361506175917 4.044771852868001e-07" rpy="0 0 0"/>
     <mass value="2.8568879657816306"/>
-    <inertia ixx="0.020703" iyy="0.0105" izz="0.0105" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+    <inertia ixx="0.0105" iyy="0.020703" izz="0.0105" ixy="0.0" iyz="0.0" ixz="0.0"/>
   </inertial>
   <visual>
-    <origin xyz="0.148786 0.298858 -0.102987" rpy="0 0 0"/>
+    <origin xyz="0.376338 -0.221306 -0.102987" rpy="0 0 0"/>
     <geometry>
       <mesh filename="package://agribot_testing_1_description/meshes/wheel_attachment_v5_2.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="steel_satin"/>
   </visual>
   <collision>
-    <origin xyz="0.148786 0.298858 -0.102987" rpy="0 0 0"/>
+    <origin xyz="0.376338 -0.221306 -0.102987" rpy="0 0 0"/>
     <geometry>
       <mesh filename="package://agribot_testing_1_description/meshes/wheel_attachment_v5_2.stl" scale="0.001 0.001 0.001"/>
     </geometry>
@@ -90,19 +98,19 @@
 
 <link name="wheel_attachment_v5_3">
   <inertial>
-    <origin xyz="-0.019183615061734244 -1.9269387752096634e-09 -9.642944184817814e-08" rpy="0 0 0"/>
+    <origin xyz="-1.926918069550254e-09 0.01918361506172206 -9.642944102938866e-08" rpy="0 0 0"/>
     <mass value="2.8568879657816306"/>
-    <inertia ixx="0.020703" iyy="0.0105" izz="0.0105" ixy="0.0" iyz="0.0" ixz="0.0"/>
+    <inertia ixx="0.0105" iyy="0.020703" izz="0.0105" ixy="0.0" iyz="0.0" ixz="0.0"/>
   </inertial>
   <visual>
-    <origin xyz="0.148786 -0.446266 -0.104548" rpy="0 0 0"/>
+    <origin xyz="-0.368786 -0.221306 -0.104548" rpy="0 0 0"/>
     <geometry>
       <mesh filename="package://agribot_testing_1_description/meshes/wheel_attachment_v5_3.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="steel_satin"/>
   </visual>
   <collision>
-    <origin xyz="0.148786 -0.446266 -0.104548" rpy="0 0 0"/>
+    <origin xyz="-0.368786 -0.221306 -0.104548" rpy="0 0 0"/>
     <geometry>
       <mesh filename="package://agribot_testing_1_description/meshes/wheel_attachment_v5_3.stl" scale="0.001 0.001 0.001"/>
     </geometry>
@@ -111,55 +119,55 @@
 
 <link name="ydlidar_x4_v1_1">
   <inertial>
-    <origin xyz="-3.226465864203387e-07 -0.001706245476819579 0.020201581369696076" rpy="0 0 0"/>
+    <origin xyz="-0.0017062454768055901 3.22646577165589e-07 0.020201581369696076" rpy="0 0 0"/>
     <mass value="1.1515616542314233"/>
-    <inertia ixx="0.000861" iyy="0.000489" izz="0.000987" ixy="-0.0" iyz="0.000148" ixz="0.0"/>
+    <inertia ixx="0.000489" iyy="0.000861" izz="0.000987" ixy="0.0" iyz="-0.0" ixz="0.000148"/>
   </inertial>
   <visual>
-    <origin xyz="-0.072008 -0.323569 -0.586385" rpy="0 0 0"/>
+    <origin xyz="-0.246089 -0.000512 -0.556385" rpy="0 0 0"/>
     <geometry>
       <mesh filename="package://agribot_testing_1_description/meshes/ydlidar_x4_v1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="steel_satin"/>
   </visual>
   <collision>
-    <origin xyz="-0.072008 -0.323569 -0.556385" rpy="0 0 0"/>
+    <origin xyz="-0.246089 -0.000512 -0.556385" rpy="0 0 0"/>
     <geometry>
       <mesh filename="package://agribot_testing_1_description/meshes/ydlidar_x4_v1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<joint name="back_right" type="continuous">
-  <origin xyz="0.292801 -0.298347 0.1016" rpy="0 0 0"/>
+<joint name="Revolute 3" type="continuous">
+  <origin xyz="-0.375827 -0.220281 0.1016" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="wheel_attachment_v3_1"/>
-  <axis xyz="-1.0 -0.0 -0.0"/>
+  <axis xyz="-0.0 -1.0 -0.0"/>
 </joint>
 
-<joint name="front_right" type="continuous">
-  <origin xyz="0.292401 0.446406 0.104574" rpy="0 0 0"/>
+<joint name="Revolute 5" type="continuous">
+  <origin xyz="0.368926 -0.219881 0.104574" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="wheel_attachment_v5_1"/>
-  <axis xyz="-1.0 -0.0 -0.0"/>
+  <axis xyz="-0.0 -1.0 -0.0"/>
 </joint>
 
-<joint name="back_left" type="continuous">
-  <origin xyz="-0.148786 -0.298858 0.102987" rpy="0 0 0"/>
+<joint name="Revolute 6" type="continuous">
+  <origin xyz="-0.376338 0.221306 0.102987" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="wheel_attachment_v5_2"/>
-  <axis xyz="-1.0 0.0 0.0"/>
+  <axis xyz="0.0 1.0 0.0"/>
 </joint>
 
-<joint name="front_left" type="continuous">
-  <origin xyz="-0.148786 0.446266 0.104548" rpy="0 0 0"/>
+<joint name="Revolute 7" type="continuous">
+  <origin xyz="0.368786 0.221306 0.104548" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="wheel_attachment_v5_3"/>
-  <axis xyz="-1.0 0.0 0.0"/>
+  <axis xyz="0.0 1.0 0.0"/>
 </joint>
 
 <joint name="Rigid 8" type="fixed">
-  <origin xyz="0.072008 0.323569 0.586385" rpy="0 0 0"/>
+  <origin xyz="0.246089 0.000512 0.556385" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="ydlidar_x4_v1_1"/>
 </joint>
