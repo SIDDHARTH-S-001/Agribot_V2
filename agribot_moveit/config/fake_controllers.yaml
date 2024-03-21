@@ -1,0 +1,17 @@
+controller_list:
+  - name: fake_arm_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - base_to_L1
+      - L1_to_L2
+      - L2_to_L3
+      - L3_to_L4
+  - name: fake_eef_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - L4_to_L5_1_A
+initial:  # Define initial robot poses per group
+  - group: arm
+    pose: default
+  - group: eef
+    pose: open
