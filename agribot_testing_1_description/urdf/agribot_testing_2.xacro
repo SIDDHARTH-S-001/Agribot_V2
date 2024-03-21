@@ -138,28 +138,28 @@
   </collision>
 </link>
 
-<joint name="Revolute 3" type="continuous">
+<joint name="back_right" type="continuous">
   <origin xyz="-0.375827 -0.220281 0.1016" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="wheel_attachment_v3_1"/>
   <axis xyz="-0.0 -1.0 -0.0"/>
 </joint>
 
-<joint name="Revolute 5" type="continuous">
+<joint name="front_right" type="continuous">
   <origin xyz="0.368926 -0.219881 0.104574" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="wheel_attachment_v5_1"/>
   <axis xyz="-0.0 -1.0 -0.0"/>
 </joint>
 
-<joint name="Revolute 6" type="continuous">
+<joint name="back_left" type="continuous">
   <origin xyz="-0.376338 0.221306 0.102987" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="wheel_attachment_v5_2"/>
   <axis xyz="0.0 1.0 0.0"/>
 </joint>
 
-<joint name="Revolute 7" type="continuous">
+<joint name="front_left" type="continuous">
   <origin xyz="0.368786 0.221306 0.104548" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="wheel_attachment_v5_3"/>
@@ -191,7 +191,7 @@
   </link>
 
 <joint name="Rigid 11" type="fixed">
-  <origin xyz="0.246089 0.180512 0.556385" rpy="0 0 -1.57"/>
+  <origin xyz="0.236089 0.170512 0.556385" rpy="0 0 -1.57"/>
   <parent link="base_link"/>
   <child link="base_arm"/>
 </joint>
