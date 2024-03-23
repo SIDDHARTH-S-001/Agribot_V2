@@ -10,7 +10,7 @@ from ultralytics import YOLO
 class KinectDepthProcessor:
     def __init__(self):
         self.bridge = CvBridge()
-        self.depth_sub = rospy.Subscriber('/your/depth/topic', Image, self.depth_callback)
+        self.depth_sub = rospy.Subscriber('/kinect2/hd/image_depth_rect', Image, self.depth_callback)
         self.camera_info_sub = rospy.Subscriber('/your/rgb/camera_info/topic', CameraInfo, self.camera_info_callback)
         self.camera_info = None
         self.depth_image = None
@@ -69,21 +69,24 @@ class KinectDepthProcessor:
             return
 
         height, width = self.depth_image.shape[:2]
-        for r in self.results.pred:
-            boxes = r.xyxy
+
+        depth_image_float = self.depth_image.astype(np.float32)
+
+        for r in self.results:
+            boxes = r.boxes
 
             for box in boxes:
                 # Bounding box
-                x1, y1, x2, y2 = box[0:4]
+                x1, y1, x2, y2 = box.xyxy[0]
                 x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2)  # Convert to int values
 
                 # Class name
-                cls_index = int(box[5])
+                cls_index = int(box.cls[0])
                 cls = self.classNames[cls_index]
 
                 if cls in self.detectNames:
                     # Confidence
-                    confidence = math.ceil((box[4] * 100)) / 100
+                    confidence = math.ceil((box.conf[0] * 100)) / 100
 
                     if confidence >= 0.5:  # Check if confidence is above 0.5
                         # Put box in cam
@@ -101,7 +104,7 @@ class KinectDepthProcessor:
                         # Depth
                         center_x = (x1 + x2) // 2
                         center_y = (y1 + y2) // 2
-                        depth = self.depth_image[center_y, center_x]
+                        depth = depth_image_float[center_y, center_x]
                         if depth != 0:
                             # Calculate world coordinates
                             x, y, z = self.pixel_to_point(center_x, center_y, depth)
@@ -139,8 +142,8 @@ def main():
     depth_processor = KinectDepthProcessor()
 
     # Specify the paths to camera matrix and distortion matrix text files
-    camera_matrix_file = 'path/to/camera_matrix.txt'
-    distortion_matrix_file = 'path/to/distortion_matrix.txt'
+    camera_matrix_file = 'camera_matrix_kinect.txt'
+    distortion_matrix_file = 'distortion_coefficients_kinect.txt'
     depth_processor.load_camera_parameters(camera_matrix_file, distortion_matrix_file)
 
     depth_processor.run()
