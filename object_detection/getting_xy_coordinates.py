@@ -65,9 +65,9 @@ while True:
                 cv2.putText(img, cls, org, font, fontScale, color, thickness)
 
                 # Display coordinates if available
-                # if pts_3d.shape[0] >= 3:
-                #     coord_text = f"x: {int(pts_3d[0])}, y: {int(pts_3d[1])}, z: {int(pts_3d[2])}"
-                #     cv2.putText(img, coord_text, (org[0], org[1] + 30), font, fontScale, color, thickness)
+                if pts_3d.shape[0] >= 3:
+                    coord_text = f"x: {int(pts_3d[0])}, y: {int(pts_3d[1])}"
+                    cv2.putText(img, coord_text, (org[0], org[1] + 30), font, fontScale, color, thickness)
 
     # Calculate FPS
     current_time = time.time()
