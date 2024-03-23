@@ -1,3 +1,5 @@
+## Runs at 1 to 1.5 FPS on Logitech C270 Webcam
+
 import cv2
 import torch
 import numpy as np
@@ -6,7 +8,7 @@ from transformers import AutoImageProcessor, AutoModelForDepthEstimation
 import time
 
 # Load the depth estimation model and image processor
-# Reference link https://huggingface.co/LiheYoung/depth-anything-small-hf
+# Reference link : https://huggingface.co/LiheYoung/depth-anything-small-hf
 image_processor = AutoImageProcessor.from_pretrained("LiheYoung/depth-anything-small-hf")
 model = AutoModelForDepthEstimation.from_pretrained("LiheYoung/depth-anything-small-hf")
 
