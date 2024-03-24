@@ -11,9 +11,11 @@ class KinectDepthProcessor:
     def __init__(self):
         self.bridge = CvBridge()
         self.depth_sub = rospy.Subscriber('/kinect2/hd/image_depth_rect', Image, self.depth_callback)
+        self.rgb_sub = rospy.Subscriber('/kinect2/hd/image_color', Image, self.rgb_callback)
         self.camera_info_sub = rospy.Subscriber('/your/rgb/camera_info/topic', CameraInfo, self.camera_info_callback)
         self.camera_info = None
         self.depth_image = None
+        self.rgb_image = None
         self.camera_matrix = None
         self.distortion_matrix = None
         self.fx = None
@@ -50,6 +52,9 @@ class KinectDepthProcessor:
 
     def depth_callback(self, msg):
         self.depth_image = self.bridge.imgmsg_to_cv2(msg)
+
+    def rgb_callback(self, msg):
+        self.rgb_image = self.bridge.imgmsg_to_cv2(msg)
 
     def pixel_to_point(self, u, v, depth):
         if self.camera_matrix is None:
@@ -117,8 +122,8 @@ class KinectDepthProcessor:
     def run(self):
         rate = rospy.Rate(10)  # 10 Hz
         while not rospy.is_shutdown():
-            if self.depth_image is not None:
-                img = cv2.cvtColor(self.depth_image, cv2.COLOR_GRAY2BGR)
+            if self.rgb_image is not None and self.depth_image is not None:
+                img = self.rgb_image.copy()
                 self.detect_objects(img)
 
                 # Calculate FPS
@@ -130,7 +135,7 @@ class KinectDepthProcessor:
                 cv2.putText(img, f"FPS: {int(self.fps)}", (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2,
                             cv2.LINE_AA)
 
-                cv2.imshow('Webcam', img)
+                cv2.imshow('RGB Image', img)
                 if cv2.waitKey(1) == ord('q'):
                     break
 
@@ -150,3 +155,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
