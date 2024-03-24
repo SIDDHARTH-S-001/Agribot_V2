@@ -12,7 +12,7 @@ class KinectDepthProcessor:
         self.bridge = CvBridge()
         self.depth_sub = rospy.Subscriber('/kinect2/hd/image_depth_rect', Image, self.depth_callback)
         self.rgb_sub = rospy.Subscriber('/kinect2/hd/image_color', Image, self.rgb_callback)
-        self.camera_info_sub = rospy.Subscriber('/your/rgb/camera_info/topic', CameraInfo, self.camera_info_callback)
+        self.camera_info_sub = rospy.Subscriber('/kinect2/hd/camera_info', CameraInfo, self.camera_info_callback)
         self.camera_info = None
         self.depth_image = None
         self.rgb_image = None
@@ -34,7 +34,7 @@ class KinectDepthProcessor:
                            "microwave", "oven", "toaster", "sink", "refrigerator", "book", "clock", "vase", "scissors",
                            "teddy bear", "hair drier", "toothbrush"
                            ]
-        self.detectNames = ["bottle", "cup", "sports ball"]
+        self.detectNames = ["bottle", "cup", "sports ball", "person"]
         self.prev_time = 0
         self.fps = 0
 
@@ -69,15 +69,16 @@ class KinectDepthProcessor:
 
         return x, y, z
 
-    def process_depth_image(self, img):
-        if self.depth_image is None or self.camera_matrix is None:
+    def detect_objects(self, img):
+        if self.rgb_image is None or self.depth_image is None:
             return
 
-        height, width = self.depth_image.shape[:2]
-
+        height, width, _ = self.rgb_image.shape
         depth_image_float = self.depth_image.astype(np.float32)
 
-        for r in self.results:
+        results = self.model(img, stream=True)
+
+        for r in results:
             boxes = r.boxes
 
             for box in boxes:
@@ -104,27 +105,32 @@ class KinectDepthProcessor:
                         color = (255, 0, 0)
                         thickness = 2
 
+                        # Display class name
                         cv2.putText(img, cls, org, font, fontScale, color, thickness)
 
                         # Depth
                         center_x = (x1 + x2) // 2
                         center_y = (y1 + y2) // 2
                         depth = depth_image_float[center_y, center_x]
-                        if depth != 0:
-                            # Calculate world coordinates
-                            x, y, z = self.pixel_to_point(center_x, center_y, depth)
-                            print(f"Object: {cls}, Depth: {depth}, Coordinates: ({x}, {y}, {z})")
 
-    def detect_objects(self, img):
-        self.results = self.model(img, stream=True)
-        self.process_depth_image(img)
+                        # Calculate world coordinates
+                        if depth != 0:
+                            x, y, z = self.pixel_to_point(center_x, center_y, depth)
+
+                            # Display coordinates
+                            coord_text = f"x: {x:.2f}, y: {y:.2f}, z: {z:.2f}"
+                            cv2.putText(img, coord_text, (org[0], org[1] + 30), font, fontScale, color, thickness)
+
+                            print(f"Object: {cls}, Depth: {depth}, Coordinates: ({x:.2f}, {y:.2f}, {z:.2f})")
+
+        return img
 
     def run(self):
         rate = rospy.Rate(10)  # 10 Hz
         while not rospy.is_shutdown():
             if self.rgb_image is not None and self.depth_image is not None:
                 img = self.rgb_image.copy()
-                self.detect_objects(img)
+                img_with_boxes = self.detect_objects(img)
 
                 # Calculate FPS
                 current_time = time.time()
@@ -132,15 +138,14 @@ class KinectDepthProcessor:
                 self.prev_time = current_time
 
                 # Display FPS in the top right corner
-                cv2.putText(img, f"FPS: {int(self.fps)}", (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2,
+                cv2.putText(img_with_boxes, f"FPS: {int(self.fps)}", (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2,
                             cv2.LINE_AA)
 
-                cv2.imshow('RGB Image', img)
+                cv2.imshow('RGB Image with Bounding Boxes', img_with_boxes)
                 if cv2.waitKey(1) == ord('q'):
                     break
 
             rate.sleep()
-
 
 def main():
     rospy.init_node('kinect_depth_processor')
