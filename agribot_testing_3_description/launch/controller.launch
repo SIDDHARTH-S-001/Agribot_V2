@@ -1,0 +1,9 @@
+<launch>
+
+<rosparam file="$(find agribot_testing_3_description)/launch/controller.yaml" command="load"/>
+<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="agribot_testing_3" args="back_right_position_controller front_right_position_controller back_left_position_controller front_left_position_controller base_twist_position_controller shoulder_position_controller elbow_position_controller wrist_position_controller left_grip_position_controller right_grip_position_controller joint_state_controller "/>
+<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+  <remap from="/joint_states" to="/agribot_testing_3/joint_states"/>
+</node>
+
+</launch>

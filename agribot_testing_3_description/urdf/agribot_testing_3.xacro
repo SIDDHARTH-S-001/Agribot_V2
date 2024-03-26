@@ -1,0 +1,416 @@
+<?xml version="1.0" ?>
+<robot name="agribot_testing_3" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find agribot_testing_3_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find agribot_testing_3_description)/urdf/agribot_testing_3.trans" />
+<xacro:include filename="$(find agribot_testing_3_description)/urdf/agribot_testing_3.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="-0.2350880604034246 0.06665534217761451 0.2751777756723828" rpy="0 0 0"/>
+    <mass value="33.861613005474375"/>
+    <inertia ixx="1.628198" iyy="2.74751" izz="3.065301" ixy="-0.000154" iyz="-0.001994" ixz="-0.003471"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="steel_satin"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_attachment_v3_1">
+  <inertial>
+    <origin xyz="3.8128879042975683e-07 -0.019174361968348597 -3.432632603838498e-07" rpy="0 0 0"/>
+    <mass value="2.8820189071853717"/>
+    <inertia ixx="0.010501" iyy="0.020705" izz="0.010501" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.607089 0.154579 0.014853" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/wheel_attachment_v3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="steel_satin"/>
+  </visual>
+  <collision>
+    <origin xyz="0.607089 0.154579 0.014853" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/wheel_attachment_v3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_attachment_v5_1">
+  <inertial>
+    <origin xyz="-3.348505955846903e-07 -0.019183612949765283 3.802777481676928e-07" rpy="0 0 0"/>
+    <mass value="2.8568879657816306"/>
+    <inertia ixx="0.0105" iyy="0.020703" izz="0.0105" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.137665 0.154179 0.01188" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/wheel_attachment_v5_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="steel_satin"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.137665 0.154179 0.01188" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/wheel_attachment_v5_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_attachment_v5_2">
+  <inertial>
+    <origin xyz="-4.557887117728754e-07 0.01918397188057064 1.3545067892827e-07" rpy="0 0 0"/>
+    <mass value="2.8568879657816306"/>
+    <inertia ixx="0.0105" iyy="0.020703" izz="0.0105" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.607599 -0.287008 0.013466" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/wheel_attachment_v5_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="steel_satin"/>
+  </visual>
+  <collision>
+    <origin xyz="0.607599 -0.287008 0.013466" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/wheel_attachment_v5_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_attachment_v5_3">
+  <inertial>
+    <origin xyz="3.728495584776059e-07 0.019183971880533668 -3.65455947405266e-07" rpy="0 0 0"/>
+    <mass value="2.8568879657816306"/>
+    <inertia ixx="0.0105" iyy="0.020703" izz="0.0105" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.137524 -0.287008 0.011905" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/wheel_attachment_v5_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="steel_satin"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.137524 -0.287008 0.011905" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/wheel_attachment_v5_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="ydlidar_x4_v1_1">
+  <inertial>
+    <origin xyz="-0.0017058707003289666 -3.205345905643586e-07 0.020201312343200273" rpy="0 0 0"/>
+    <mass value="1.1515616542314233"/>
+    <inertia ixx="0.000489" iyy="0.000861" izz="0.000987" ixy="0.0" iyz="0.0" ixz="0.000148"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.014827 -0.066215 -0.439932" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/ydlidar_x4_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="steel_satin"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.014827 -0.066215 -0.439932" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/ydlidar_x4_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="camera_mount_v1_1">
+  <inertial>
+    <origin xyz="0.01250002972934782 -0.012500320534587647 0.07788741036522173" rpy="0 0 0"/>
+    <mass value="0.5409900233067988"/>
+    <inertia ixx="0.000886" iyy="0.00104" izz="0.00081" ixy="-0.000133" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.010173 0.088785 -0.439932" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/camera_mount_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="steel_satin"/>
+  </visual>
+  <collision>
+    <origin xyz="0.010173 0.088785 -0.439932" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/camera_mount_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="kinectv2_v1_1">
+  <inertial>
+    <origin xyz="0.00021058727276473174 -0.00269160106068711 0.038314477205350084" rpy="0 0 0"/>
+    <mass value="0.7810524514781609"/>
+    <inertia ixx="0.001383" iyy="0.002954" izz="0.003916" ixy="-0.001402" iyz="2.1e-05" ixz="-1.1e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.002327 0.101285 -0.542432" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/kinectv2_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.002327 0.101285 -0.542432" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/kinectv2_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="base_arm_v2_1">
+  <inertial>
+    <origin xyz="2.9729364636743583e-08 0.01249967946542374 0.010307514282643648" rpy="0 0 0"/>
+    <mass value="0.9330886709339293"/>
+    <inertia ixx="0.001421" iyy="0.001421" izz="0.002578" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.460173 -0.221215 -0.439932" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/base_arm_v2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin xyz="0.460173 -0.221215 -0.439932" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/base_arm_v2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_1_v3_1">
+  <inertial>
+    <origin xyz="-0.003271917210980746 0.004456357998370242 0.025593960333273658" rpy="0 0 0"/>
+    <mass value="1.6613467153005188"/>
+    <inertia ixx="0.002663" iyy="0.002483" izz="0.002146" ixy="-2.2e-05" iyz="-0.000454" ixz="0.000339"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.460173 -0.233715 -0.480932" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/link_1_v3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="opaque646464"/>
+  </visual>
+  <collision>
+    <origin xyz="0.460173 -0.233715 -0.480932" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/link_1_v3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_2_v1_1">
+  <inertial>
+    <origin xyz="0.0004995698471454424 0.05852714517882579 0.055084304746622625" rpy="0 0 0"/>
+    <mass value="0.2532575834482899"/>
+    <inertia ixx="0.000795" iyy="0.000454" izz="0.000342" ixy="0.0" iyz="-0.000362" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.468884 -0.274766 -0.555672" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/link_2_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="steel_satin"/>
+  </visual>
+  <collision>
+    <origin xyz="0.468884 -0.274766 -0.555672" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/link_2_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_3_v2_1">
+  <inertial>
+    <origin xyz="0.018953081069860656 0.03419477091099504 0.03607507426293899" rpy="0 0 0"/>
+    <mass value="0.6682248227150334"/>
+    <inertia ixx="0.002549" iyy="0.001313" izz="0.001356" ixy="-6e-06" iyz="-0.001236" ixz="-7e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.465884 -0.394167 -0.675073" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/link_3_v2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin xyz="0.465884 -0.394167 -0.675073" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/link_3_v2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="eef_base_v1_1">
+  <inertial>
+    <origin xyz="-0.018914256538726415 0.043186333490104034 0.004331187030702122" rpy="0 0 0"/>
+    <mass value="0.33153308863416847"/>
+    <inertia ixx="9.1e-05" iyy="9.2e-05" izz="0.000121" ixy="-0.0" iyz="-5e-06" ixz="-1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.427784 -0.484622 -0.765528" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/eef_base_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin xyz="0.427784 -0.484622 -0.765528" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/eef_base_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_claw_v3_1">
+  <inertial>
+    <origin xyz="-0.03162572015420595 0.056519004177445376 0.0008015719343229533" rpy="0 0 0"/>
+    <mass value="0.02736131598910003"/>
+    <inertia ixx="2.2e-05" iyy="5e-06" izz="2.7e-05" ixy="9e-06" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.478294 -0.529558 -0.756071" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/left_claw_v3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin xyz="0.478294 -0.529558 -0.756071" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/left_claw_v3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_claw_v3_1">
+  <inertial>
+    <origin xyz="0.03162000829220274 0.056523865138236706 0.0008015719343187344" rpy="0 0 0"/>
+    <mass value="0.027361315989100486"/>
+    <inertia ixx="2.2e-05" iyy="5e-06" izz="2.7e-05" ixy="-9e-06" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.415294 -0.529558 -0.756071" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/right_claw_v3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin xyz="0.415294 -0.529558 -0.756071" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://agribot_testing_3_description/meshes/right_claw_v3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="back_right" type="continuous">
+  <origin xyz="-0.607089 -0.154579 -0.014853" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="wheel_attachment_v3_1"/>
+  <axis xyz="-0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="front_right" type="continuous">
+  <origin xyz="0.137665 -0.154179 -0.01188" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="wheel_attachment_v5_1"/>
+  <axis xyz="-0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="back_left" type="continuous">
+  <origin xyz="-0.607599 0.287008 -0.013466" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="wheel_attachment_v5_2"/>
+  <axis xyz="0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="front_left" type="continuous">
+  <origin xyz="0.137524 0.287008 -0.011905" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="wheel_attachment_v5_3"/>
+  <axis xyz="0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="Rigid 8" type="fixed">
+  <origin xyz="0.014827 0.066215 0.439932" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="ydlidar_x4_v1_1"/>
+</joint>
+
+<joint name="Rigid 9" type="fixed">
+  <origin xyz="-0.010173 -0.088785 0.439932" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="camera_mount_v1_1"/>
+</joint>
+
+<joint name="Rigid 10" type="fixed">
+  <origin xyz="0.0125 -0.0125 0.1025" rpy="0 0 0"/>
+  <parent link="camera_mount_v1_1"/>
+  <child link="kinectv2_v1_1"/>
+</joint>
+
+<joint name="Rigid 11" type="fixed">
+  <origin xyz="-0.460173 0.221215 0.439932" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="base_arm_v2_1"/>
+</joint>
+
+<joint name="base_twist" type="continuous">
+  <origin xyz="0.0 0.0125 0.041" rpy="0 0 0"/>
+  <parent link="base_arm_v2_1"/>
+  <child link="link_1_v3_1"/>
+  <axis xyz="0.0 -0.0 -1.0"/>
+</joint>
+
+<joint name="shoulder" type="continuous">
+  <origin xyz="-0.008711 0.041051 0.07474" rpy="0 0 0"/>
+  <parent link="link_1_v3_1"/>
+  <child link="link_2_v1_1"/>
+  <axis xyz="1.0 0.0 -0.0"/>
+</joint>
+
+<joint name="elbow" type="continuous">
+  <origin xyz="0.003 0.119401 0.119401" rpy="0 0 0"/>
+  <parent link="link_2_v1_1"/>
+  <child link="link_3_v2_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+<joint name="wrist" type="continuous">
+  <origin xyz="0.0381 0.090455 0.090455" rpy="0 0 0"/>
+  <parent link="link_3_v2_1"/>
+  <child link="eef_base_v1_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+<joint name="left_grip" type="continuous">
+  <origin xyz="-0.05051 0.044936 -0.009457" rpy="0 0 0"/>
+  <parent link="eef_base_v1_1"/>
+  <child link="left_claw_v3_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+</joint>
+
+<joint name="right_grip" type="continuous">
+  <origin xyz="0.01249 0.044936 -0.009457" rpy="0 0 0"/>
+  <parent link="eef_base_v1_1"/>
+  <child link="right_claw_v3_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+</joint>
+
+</robot>
