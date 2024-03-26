@@ -1,0 +1,17 @@
+joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+robot_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - base_to_L1
+    - L1_to_L2
+    - L2_to_L3
+    - L3_to_L4
+    - L4_to_L5_1_A
+    - L4_to_L5_1_B
+    - L4_to_L5_2_A
+    - L4_to_L5_2_B
+    - L5_1_A_to_L5_3_A
+    - L5_B_A_to_L5_3_B

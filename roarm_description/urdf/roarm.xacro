@@ -10,6 +10,9 @@
     <color rgba="1 1 1 1"/>
   </material>
 
+  <xacro:include filename="$(find roarm_description)/urdf/roarm.trans" />
+  <xacro:include filename="$(find roarm_description)/urdf/roarm.gazebo" />
+
   <link name="base_arm">
     <visual>
       <geometry>
