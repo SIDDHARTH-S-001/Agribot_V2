@@ -116,7 +116,7 @@
     <inertia ixx="0.000489" iyy="0.000861" izz="0.000987" ixy="0.0" iyz="0.0" ixz="0.000148"/>
   </inertial>
   <visual>
-    <origin xyz="-0.014827 -0.066215 -0.553412" rpy="0 0 0"/>
+    <origin xyz="-0.014827 -0.066215 -0.583412" rpy="0 0 0"/>
     <geometry>
       <mesh filename="package://agribot_testing_3_description/meshes/ydlidar_x4_v1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
@@ -177,7 +177,7 @@
 <joint name="kinect_optical_frame" type="fixed">
   <parent link="kinectv2_v1_1"/>
   <child link="optical_frame"/>
-  <origin xyz="0 0 0" rpy="-1.5708 0 -1.5708"/>
+  <origin xyz="0.1 0 0.0375" rpy="-1.5708 0 0.5236"/>false
   <axis xyz="0 0 0"/>
 </joint>
 
@@ -332,14 +332,14 @@
   <origin xyz="-0.607089 -0.154579 0.098627" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="wheel_attachment_v3_1"/>
-  <axis xyz="-0.0 -1.0 0.0"/>
+  <axis xyz="-0.0 1.0 0.0"/>
 </joint>
 
 <joint name="front_right" type="continuous">
   <origin xyz="0.137665 -0.154179 0.1016" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="wheel_attachment_v5_1"/>
-  <axis xyz="-0.0 -1.0 0.0"/>
+  <axis xyz="-0.0 1.0 0.0"/>
 </joint>
 
 <joint name="back_left" type="continuous">
@@ -357,7 +357,7 @@
 </joint>
 
 <joint name="Rigid 8" type="fixed">
-  <origin xyz="0.014827 0.066215 0.553412" rpy="0 0 0"/>
+  <origin xyz="0.014827 0.066215 0.583412" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="ydlidar_x4_v1_1"/>
 </joint>
