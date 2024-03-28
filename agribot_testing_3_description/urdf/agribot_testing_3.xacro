@@ -172,6 +172,15 @@
   </collision>
 </link>
 
+<link name="optical_frame"/>
+
+<joint name="kinect_optical_frame" type="fixed">
+  <parent link="kinectv2_v1_1"/>
+  <child link="optical_frame"/>
+  <origin xyz="0 0 0" rpy="-1.5708 0 -1.5708"/>
+  <axis xyz="0 0 0"/>
+</joint>
+
 <link name="base_arm_v2_1">
   <inertial>
     <origin xyz="2.972936491429934e-08 0.01249967946542388 0.010307514282643426" rpy="0 0 0"/>
