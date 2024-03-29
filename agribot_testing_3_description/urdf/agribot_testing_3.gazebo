@@ -64,6 +64,8 @@
   <selfCollide>true</selfCollide>
 </gazebo>
 
+<gazebo reference="rgb_frame"/>
+
 <gazebo reference="base_arm_v2_1">
   <material>${body_color}</material>
   <mu1>0.2</mu1>
@@ -151,7 +153,7 @@
 </gazebo>
 
 <!-- Kinect -->
-<gazebo reference="kinectv2_v1_1">
+<gazebo reference="rgb_frame">
   <sensor name="kinectv2_camera" type="depth">
     <update_rate>20</update_rate>
     <camera>

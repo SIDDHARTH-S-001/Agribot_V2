@@ -172,12 +172,21 @@
   </collision>
 </link>
 
+<link name="rgb_frame"/>
+
+<joint name="kinect_rgb_frame" type="fixed">
+  <parent link="kinectv2_v1_1"/>
+  <child link="rgb_frame"/>
+  <origin xyz="0.075 0.075 0.0375" rpy="0 0 2.0944"/>
+  <axis xyz="0 0 0"/>
+</joint>
+
 <link name="optical_frame"/>
 
-<joint name="kinect_optical_frame" type="fixed">
-  <parent link="kinectv2_v1_1"/>
+<joint name="rgb_optical_frame" type="fixed">
+  <parent link="rgb_frame"/>
   <child link="optical_frame"/>
-  <origin xyz="0.1 0 0.0375" rpy="-1.5708 0 0.5236"/>false
+  <origin xyz="0 0 0" rpy="-1.5708 0 -1.5708"/>
   <axis xyz="0 0 0"/>
 </joint>
 
