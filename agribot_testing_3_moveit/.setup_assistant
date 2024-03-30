@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: agribot_testing_3_description
+    relative_path: urdf/agribot_testing_3.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/agribot_testing_3.srdf
+  CONFIG:
+    author_name: S.Siddharth
+    author_email: sid2k01@gmail.com
+    generated_timestamp: 1711778886
