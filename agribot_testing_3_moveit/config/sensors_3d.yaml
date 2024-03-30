@@ -1,2 +1,15 @@
+# you can force CPU-based rendering with this command:
+# export LIBGL_ALWAYS_SOFTWARE=1
+
 sensors:
-  []
+  - sensor_plugin: occupancy_map_monitor/PointCloudOctomapUpdater
+    point_cloud_topic: /kinectv2/depth/points
+    max_range: 4.5
+    point_subsample: 1
+    padding_offset: 0.1
+    padding_scale: 1.0 # Should always be >= 1.0. 
+                       # Scale up collision shapes in the scene 
+                       # before excluding them from the octomap.
+    max_update_rate: 5.0
+    filtered_cloud_topic: filtered_cloud
+    ns: kinectv2

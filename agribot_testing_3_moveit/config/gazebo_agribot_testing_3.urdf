@@ -56,69 +56,68 @@
     <transmission name="base_twist_tran">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="base_twist">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="base_twist_actr">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <transmission name="shoulder_tran">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="shoulder">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="shoulder_actr">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <transmission name="elbow_tran">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="elbow">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="elbow_actr">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <transmission name="wrist_tran">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="wrist">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="wrist_actr">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <transmission name="left_grip_tran">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="left_grip">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="left_grip_actr">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <transmission name="right_grip_tran">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="right_grip">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="right_grip_actr">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
+  
     <gazebo>
-        <plugin filename="libgazebo_ros_control.so" name="control" />
-        <plugin name="gazebo_ros_control">
-            <robotNamespace>/</robotNamespace>
-        </plugin>
+    <plugin name="control" filename="libgazebo_ros_control.so"/>
     </gazebo>
+
     <gazebo reference="base_link">
         <material>Gazebo/Silver</material>
         <mu1>0.2</mu1>
@@ -276,15 +275,19 @@
                 <frameName>optical_frame</frameName>
                 <pointCloudCutoff>0.5</pointCloudCutoff>
                 <pointCloudCutoffMax>4.5</pointCloudCutoffMax>
-                <distortionK1>0.00000001</distortionK1>
-                <distortionK2>0.00000001</distortionK2>
-                <distortionK3>0.00000001</distortionK3>
-                <distortionT1>0.00000001</distortionT1>
-                <distortionT2>0.00000001</distortionT2>
+
+                <!-- The following are values taken from calibration matrix
+                and distortion matrix of a real Xbox KinectV2 -->
+                
+                <distortionK1>0.0418</distortionK1>
+                <distortionK2>2.4255</distortionK2>
+                <distortionK3>-27.81</distortionK3>
+                <distortionT1>0.004395</distortionT1>
+                <distortionT2>0.0069</distortionT2>            
                 <CxPrime>0</CxPrime>
-                <Cx>0</Cx>
-                <Cy>0</Cy>
-                <focalLength>0</focalLength>
+                <Cx>316</Cx>
+                <Cy>256</Cy>
+                <focalLength>910</focalLength>
                 <hackBaseline>0</hackBaseline>
             </plugin>
         </sensor>
@@ -293,7 +296,7 @@
     <gazebo>
         <plugin filename="libgazebo_ros_skid_steer_drive.so" name="skid_steer_drive_controller">
             <updateRate>100.0</updateRate>
-            <robotNamespace>/agribot_testing_3</robotNamespace>
+            <robotNamespace>/</robotNamespace>
             <leftFrontJoint>front_left</leftFrontJoint>
             <rightFrontJoint>front_right</rightFrontJoint>
             <leftRearJoint>back_left</leftRearJoint>
@@ -303,7 +306,7 @@
             <robotBaseFrame>base_link</robotBaseFrame>
             <torque>20</torque>
             <topicName>cmd_vel</topicName>
-            <broadcastTF>false</broadcastTF>
+            <broadcastTF>true</broadcastTF>
         </plugin>
     </gazebo>
     <link name="base_link">
