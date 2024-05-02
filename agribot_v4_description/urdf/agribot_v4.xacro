@@ -267,7 +267,7 @@
     <geometry>
       <mesh filename="package://agribot_v4_description/meshes/link_1_v3_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="opaque636363"/>
+    <material name="opaque272727"/>
   </visual>
   <collision>
     <origin xyz="-0.235 -0.165 -0.596912" rpy="0 0 0"/>
@@ -403,56 +403,56 @@
   </collision>
 </link>
 
-<joint name="Revolute 1" type="continuous">
+<joint name="front_right_steer" type="continuous">
   <origin xyz="0.372581 -0.24075 0.2316" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="wheel_steer_v2_1"/>
   <axis xyz="0.002015 0.0 -0.999998"/>
 </joint>
 
-<joint name="Revolute 2" type="continuous">
+<joint name="front_left_steer" type="continuous">
   <origin xyz="0.372522 0.24115 0.231574" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="wheel_steer_v2_2"/>
   <axis xyz="0.001375 0.0 -0.999999"/>
 </joint>
 
-<joint name="Revolute 3" type="continuous">
+<joint name="back_right_steer" type="continuous">
   <origin xyz="-0.371732 -0.24115 0.231126" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="wheel_steer_v2_3"/>
   <axis xyz="-0.001415 0.0 -0.999999"/>
 </joint>
 
-<joint name="Revolute 4" type="continuous">
+<joint name="back_left_steer" type="continuous">
   <origin xyz="-0.372163 0.24115 0.231127" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="wheel_steer_v2_4"/>
   <axis xyz="-0.001415 0.0 -0.999999"/>
 </joint>
 
-<joint name="Revolute 5" type="continuous">
+<joint name="front_right_drive" type="continuous">
   <origin xyz="0.000261 0.020556 -0.13" rpy="0 0 0"/>
   <parent link="wheel_steer_v2_1"/>
   <child link="wheel_attachment_v5_1"/>
   <axis xyz="0.0 -1.0 -0.0"/>
 </joint>
 
-<joint name="Revolute 6" type="continuous">
+<joint name="front_left_drive" type="continuous">
   <origin xyz="0.000179 -0.020557 -0.13" rpy="0 0 0"/>
   <parent link="wheel_steer_v2_2"/>
   <child link="wheel_attachment_v5_2"/>
   <axis xyz="-0.0 1.0 0.0"/>
 </joint>
 
-<joint name="Revolute 7" type="continuous">
+<joint name="back_left_drive" type="continuous">
   <origin xyz="-0.000183 -0.020557 -0.13" rpy="0 0 0"/>
   <parent link="wheel_steer_v2_4"/>
   <child link="wheel_attachment_v5_3"/>
   <axis xyz="-0.0 1.0 0.0"/>
 </joint>
 
-<joint name="Revolute 8" type="continuous">
+<joint name="back_right_drive" type="continuous">
   <origin xyz="-0.000184 0.020556 -0.13" rpy="0 0 0"/>
   <parent link="wheel_steer_v2_3"/>
   <child link="wheel_attachment_v5_4"/>
@@ -477,42 +477,42 @@
   <child link="base_arm_v2_1"/>
 </joint>
 
-<joint name="Revolute 12" type="continuous">
+<joint name="base_twist" type="continuous">
   <origin xyz="0.01 0.01 0.041" rpy="0 0 0"/>
   <parent link="base_arm_v2_1"/>
   <child link="link_1_v3_1"/>
   <axis xyz="-0.0 0.0 -1.0"/>
 </joint>
 
-<joint name="Revolute 13" type="continuous">
+<joint name="shoulder" type="continuous">
   <origin xyz="-0.005962 0.041051 0.07474" rpy="0 0 0"/>
   <parent link="link_1_v3_1"/>
   <child link="link_2_v1_1"/>
   <axis xyz="1.0 0.0 -0.0"/>
 </joint>
 
-<joint name="Revolute 14" type="continuous">
+<joint name="elbow" type="continuous">
   <origin xyz="0.0 0.119401 0.1194" rpy="0 0 0"/>
   <parent link="link_2_v1_1"/>
   <child link="link_3_v2_1"/>
   <axis xyz="1.0 -0.0 -0.0"/>
 </joint>
 
-<joint name="Revolute 15" type="continuous">
+<joint name="wrist" type="continuous">
   <origin xyz="0.0003 0.090455 0.090456" rpy="0 0 0"/>
   <parent link="link_3_v2_1"/>
   <child link="eef_base_v1_1"/>
   <axis xyz="-1.0 0.0 0.0"/>
 </joint>
 
-<joint name="Revolute 16" type="continuous">
+<joint name="left_grip" type="continuous">
   <origin xyz="0.00851 0.053311 0.039936" rpy="0 0 0"/>
   <parent link="eef_base_v1_1"/>
   <child link="left_claw_v3_1"/>
   <axis xyz="0.0 -0.707107 0.707107"/>
 </joint>
 
-<joint name="Revolute 17" type="continuous">
+<joint name="right_grip" type="continuous">
   <origin xyz="0.05051 0.038462 0.025087" rpy="0 0 0"/>
   <parent link="eef_base_v1_1"/>
   <child link="right_claw_v3_1"/>

@@ -5,59 +5,59 @@ agribot_v4_controller:
     publish_rate: 50
 
   # Position Controllers --------------------------------------
-  Revolute 1_position_controller:
+  front_right_steer_position_controller:
     type: effort_controllers/JointPositionController
-    joint: Revolute 1
+    joint: front_right_steer
     pid: {p: 100.0, i: 0.01, d: 10.0}
-  Revolute 2_position_controller:
+  front_left_steer_position_controller:
     type: effort_controllers/JointPositionController
-    joint: Revolute 2
+    joint: front_left_steer
     pid: {p: 100.0, i: 0.01, d: 10.0}
-  Revolute 3_position_controller:
+  back_right_steer_position_controller:
     type: effort_controllers/JointPositionController
-    joint: Revolute 3
+    joint: back_right_steer
     pid: {p: 100.0, i: 0.01, d: 10.0}
-  Revolute 4_position_controller:
+  back_left_steer_position_controller:
     type: effort_controllers/JointPositionController
-    joint: Revolute 4
+    joint: back_left_steer
     pid: {p: 100.0, i: 0.01, d: 10.0}
-  Revolute 5_position_controller:
+  front_right_drive_position_controller:
     type: effort_controllers/JointPositionController
-    joint: Revolute 5
+    joint: front_right_drive
     pid: {p: 100.0, i: 0.01, d: 10.0}
-  Revolute 6_position_controller:
+  front_left_drive_position_controller:
     type: effort_controllers/JointPositionController
-    joint: Revolute 6
+    joint: front_left_drive
     pid: {p: 100.0, i: 0.01, d: 10.0}
-  Revolute 7_position_controller:
+  back_left_drive_position_controller:
     type: effort_controllers/JointPositionController
-    joint: Revolute 7
+    joint: back_left_drive
     pid: {p: 100.0, i: 0.01, d: 10.0}
-  Revolute 8_position_controller:
+  back_right_drive_position_controller:
     type: effort_controllers/JointPositionController
-    joint: Revolute 8
+    joint: back_right_drive
     pid: {p: 100.0, i: 0.01, d: 10.0}
-  Revolute 12_position_controller:
+  base_twist_position_controller:
     type: effort_controllers/JointPositionController
-    joint: Revolute 12
+    joint: base_twist
     pid: {p: 100.0, i: 0.01, d: 10.0}
-  Revolute 13_position_controller:
+  shoulder_position_controller:
     type: effort_controllers/JointPositionController
-    joint: Revolute 13
+    joint: shoulder
     pid: {p: 100.0, i: 0.01, d: 10.0}
-  Revolute 14_position_controller:
+  elbow_position_controller:
     type: effort_controllers/JointPositionController
-    joint: Revolute 14
+    joint: elbow
     pid: {p: 100.0, i: 0.01, d: 10.0}
-  Revolute 15_position_controller:
+  wrist_position_controller:
     type: effort_controllers/JointPositionController
-    joint: Revolute 15
+    joint: wrist
     pid: {p: 100.0, i: 0.01, d: 10.0}
-  Revolute 16_position_controller:
+  left_grip_position_controller:
     type: effort_controllers/JointPositionController
-    joint: Revolute 16
+    joint: left_grip
     pid: {p: 100.0, i: 0.01, d: 10.0}
-  Revolute 17_position_controller:
+  right_grip_position_controller:
     type: effort_controllers/JointPositionController
-    joint: Revolute 17
+    joint: right_grip
     pid: {p: 100.0, i: 0.01, d: 10.0}
