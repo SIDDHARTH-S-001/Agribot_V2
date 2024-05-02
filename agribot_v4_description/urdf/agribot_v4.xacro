@@ -235,6 +235,24 @@
   </collision>
 </link>
 
+<link name="rgb_frame"/>
+
+<joint name="kinect_rgb_frame" type="fixed">
+  <parent link="kinectv2_v1_1"/>
+  <child link="rgb_frame"/>
+  <origin xyz="0.075 0.00 0.0375" rpy="0 0 2.61799"/>
+  <axis xyz="0 0 0"/>
+</joint>
+
+<link name="optical_frame"/>
+
+<joint name="rgb_optical_frame" type="fixed">
+  <parent link="rgb_frame"/>
+  <child link="optical_frame"/>
+  <origin xyz="0 0 0" rpy="-1.5708 0 -1.5708"/>
+  <axis xyz="0 0 0"/>
+</joint>
+
 <link name="base_arm_v2_1">
   <inertial>
     <origin xyz="0.009999785507459086 0.009999890017333729 0.010307185646813322" rpy="0 0 0"/>
@@ -389,7 +407,7 @@
     <inertia ixx="0.000489" iyy="0.000861" izz="0.000987" ixy="0.0" iyz="-0.0" ixz="-0.000148"/>
   </inertial>
   <visual>
-    <origin xyz="0.25 0.0 -0.555912" rpy="0 0 0"/>
+    <origin xyz="0.25 0.0 -0.585912" rpy="0 0 0"/>
     <geometry>
       <mesh filename="package://agribot_v4_description/meshes/ydlidar_x4_v1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
@@ -520,7 +538,7 @@
 </joint>
 
 <joint name="Rigid 18" type="fixed">
-  <origin xyz="-0.25 0.0 0.555912" rpy="0 0 0"/>
+  <origin xyz="-0.25 0.0 0.585912" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="ydlidar_x4_v1_1"/>
 </joint>
