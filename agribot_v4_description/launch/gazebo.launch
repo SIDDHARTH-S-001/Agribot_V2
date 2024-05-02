@@ -8,4 +8,6 @@
     <arg name="headless" value="false"/>
     <arg name="debug" value="false"/>
   </include>
+
+  <include file="$(find agribot_v4_description)/launch/controller_updated.launch"/>
 </launch>

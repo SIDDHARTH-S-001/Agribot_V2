@@ -453,7 +453,7 @@
   <origin xyz="0.000261 0.020556 -0.13" rpy="0 0 0"/>
   <parent link="wheel_steer_v2_1"/>
   <child link="wheel_attachment_v5_1"/>
-  <axis xyz="0.0 -1.0 -0.0"/>
+  <axis xyz="0.0 1.0 -0.0"/>
 </joint>
 
 <joint name="front_left_drive" type="continuous">
@@ -474,7 +474,7 @@
   <origin xyz="-0.000184 0.020556 -0.13" rpy="0 0 0"/>
   <parent link="wheel_steer_v2_3"/>
   <child link="wheel_attachment_v5_4"/>
-  <axis xyz="0.0 -1.0 -0.0"/>
+  <axis xyz="0.0 1.0 -0.0"/>
 </joint>
 
 <joint name="Rigid 9" type="fixed">
@@ -524,7 +524,7 @@
 </joint>
 
 <joint name="left_grip" type="continuous">
-  <origin xyz="0.00851 0.053311 0.039936" rpy="0 0 0"/>
+  <origin xyz="-0.01249 0.038462 0.025087" rpy="0 0 0"/>
   <parent link="eef_base_v1_1"/>
   <child link="left_claw_v3_1"/>
   <axis xyz="0.0 -0.707107 0.707107"/>

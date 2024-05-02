@@ -44,29 +44,29 @@
 
 <gazebo reference="wheel_attachment_v5_1">
   <material>${body_color}</material>
-  <mu1>0.2</mu1>
-  <mu2>0.2</mu2>
+  <mu1>100</mu1>
+  <mu2>100</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
 <gazebo reference="wheel_attachment_v5_2">
   <material>${body_color}</material>
-  <mu1>0.2</mu1>
-  <mu2>0.2</mu2>
+  <mu1>100</mu1>
+  <mu2>100</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
 <gazebo reference="wheel_attachment_v5_3">
   <material>${body_color}</material>
-  <mu1>0.2</mu1>
-  <mu2>0.2</mu2>
+  <mu1>100</mu1>
+  <mu2>100</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
 <gazebo reference="wheel_attachment_v5_4">
   <material>${body_color}</material>
-  <mu1>0.2</mu1>
-  <mu2>0.2</mu2>
+  <mu1>100</mu1>
+  <mu2>100</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
@@ -221,5 +221,61 @@
     </plugin>
   </sensor>
 </gazebo>
+
+<!-- <gazebo>
+        <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+
+            <updateRate>50</updateRate>
+
+            <leftJoint>front_left_drive</leftJoint>
+
+            <rightJoint>front_right_drive</rightJoint>
+
+            <wheelSeparation>0.48</wheelSeparation>
+
+            <wheelDiameter>0.2</wheelDiameter>
+
+            <wheelAcceleration>1.0</wheelAcceleration>
+
+            <wheelTorque>20</wheelTorque>
+
+            <commandTopic>cmd_vel</commandTopic>
+
+            <odometryTopic>odom</odometryTopic>
+
+            <odometryFrame>odom</odometryFrame>
+
+            <robotBaseFrame>base_link</robotBaseFrame>
+
+            <odometrySource>1</odometrySource>
+
+            <publishWheelTF>false</publishWheelTF>
+
+            <publishOdom>true</publishOdom>
+
+            <publishWheelJointState>true</publishWheelJointState>
+
+            <legacyMode>false</legacyMode>
+        </plugin>
+    </gazebo> -->
+
+   <gazebo>
+        <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+            <updateRate>100.0</updateRate>
+            <robotNamespace>/</robotNamespace>
+            <leftFrontJoint>front_left_drive</leftFrontJoint>
+            <rightFrontJoint>front_right_drive</rightFrontJoint>
+            <leftRearJoint>back_left_drive</leftRearJoint>
+            <rightRearJoint>back_right_drive</rightRearJoint>
+            <wheelSeparation>0.482</wheelSeparation>
+            <wheelDiameter>0.2</wheelDiameter>
+            <robotBaseFrame>base_link</robotBaseFrame>
+            <torque>20</torque>
+            <topicName>cmd_vel</topicName>
+            <!-- <odometryTopic>odom</odometryTopic>
+            <odometryFrame>odom</odometryFrame> -->
+            <broadcastTF>true</broadcastTF>
+        </plugin>
+    </gazebo>
 
 </robot>
