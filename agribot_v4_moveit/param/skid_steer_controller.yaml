@@ -1,0 +1,34 @@
+agribot_testing_1_controller:
+  type: "diff_drive_controller/DiffDriveController"
+  left_wheel: ['front_left', 'back_left']
+  right_wheel: ['front_right', 'back_right']
+  publish_rate: 50
+  pose_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 0.03]
+  twist_covariance_diagonal: [0.001, 0.001, 0.001, 1000000.0, 1000000.0, 0.03]
+  cmd_vel_timeout: 0.25
+
+  # Odometry fused with IMU is published by robot_localization, so
+  # no need to publish a TF based on encoders alone.
+  enable_odom_tf: false
+
+  wheel_separation : 0.481244
+  wheel_radius : 0.1016
+
+  # Wheel separation and radius multipliers
+  wheel_separation_multiplier: 1.0 # default: 1.0
+  wheel_radius_multiplier    : 1.0 # default: 1.0
+
+  # Velocity and acceleration limits
+  # Whenever a min_* is unspecified, default to -max_*
+  linear:
+    x:
+      has_velocity_limits    : true
+      max_velocity           : 0.35   # m/s
+      has_acceleration_limits: true
+      max_acceleration       : 0.40   # m/s^2
+  angular:
+    z:
+      has_velocity_limits    : true
+      max_velocity           : 1.44   # rad/s
+      has_acceleration_limits: true
+      max_acceleration       : 3.0   # rad/s^2

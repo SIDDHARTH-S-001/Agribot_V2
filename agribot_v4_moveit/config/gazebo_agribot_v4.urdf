@@ -160,8 +160,8 @@
         </plugin>
     </gazebo> -->
     <gazebo>
-        <plugin name="control" filename="libgazebo_ros_control.so"/>
-    </gazebo>
+  <plugin name="control" filename="libgazebo_ros_control.so"/>
+</gazebo>
     <gazebo reference="base_link">
         <material>Gazebo/Silver</material>
         <mu1>0.2</mu1>
@@ -170,49 +170,49 @@
         <gravity>true</gravity>
     </gazebo>
     <gazebo reference="wheel_steer_v2_1">
-        <material>Gazebo/Silver</material>
+        <material>Gazebo/Grey</material>
         <mu1>0.2</mu1>
         <mu2>0.2</mu2>
         <selfCollide>true</selfCollide>
     </gazebo>
     <gazebo reference="wheel_steer_v2_2">
-        <material>Gazebo/Silver</material>
+        <material>Gazebo/Grey</material>
         <mu1>0.2</mu1>
         <mu2>0.2</mu2>
         <selfCollide>true</selfCollide>
     </gazebo>
     <gazebo reference="wheel_steer_v2_3">
-        <material>Gazebo/Silver</material>
+        <material>Gazebo/Grey</material>
         <mu1>0.2</mu1>
         <mu2>0.2</mu2>
         <selfCollide>true</selfCollide>
     </gazebo>
     <gazebo reference="wheel_steer_v2_4">
-        <material>Gazebo/Silver</material>
+        <material>Gazebo/Grey</material>
         <mu1>0.2</mu1>
         <mu2>0.2</mu2>
         <selfCollide>true</selfCollide>
     </gazebo>
     <gazebo reference="wheel_attachment_v5_1">
-        <material>Gazebo/Silver</material>
+        <material>Gazebo/Black</material>
         <mu1>100</mu1>
         <mu2>100</mu2>
         <selfCollide>true</selfCollide>
     </gazebo>
     <gazebo reference="wheel_attachment_v5_2">
-        <material>Gazebo/Silver</material>
+        <material>Gazebo/Black</material>
         <mu1>100</mu1>
         <mu2>100</mu2>
         <selfCollide>true</selfCollide>
     </gazebo>
     <gazebo reference="wheel_attachment_v5_3">
-        <material>Gazebo/Silver</material>
+        <material>Gazebo/Black</material>
         <mu1>100</mu1>
         <mu2>100</mu2>
         <selfCollide>true</selfCollide>
     </gazebo>
     <gazebo reference="wheel_attachment_v5_4">
-        <material>Gazebo/Silver</material>
+        <material>Gazebo/Black</material>
         <mu1>100</mu1>
         <mu2>100</mu2>
         <selfCollide>true</selfCollide>
@@ -224,56 +224,56 @@
         <selfCollide>true</selfCollide>
     </gazebo>
     <gazebo reference="kinectv2_v1_1">
-        <material>Gazebo/Silver</material>
+        <material>Gazebo/DarkGrey</material>
         <mu1>0.2</mu1>
         <mu2>0.2</mu2>
         <selfCollide>true</selfCollide>
     </gazebo>
     <gazebo reference="rgb_frame" />
     <gazebo reference="base_arm_v2_1">
-        <material>Gazebo/Silver</material>
+        <material>Gazebo/Black</material>
         <mu1>0.2</mu1>
         <mu2>0.2</mu2>
         <selfCollide>true</selfCollide>
     </gazebo>
     <gazebo reference="link_1_v3_1">
-        <material>Gazebo/Silver</material>
+        <material>Gazebo/Black</material>
         <mu1>0.2</mu1>
         <mu2>0.2</mu2>
         <selfCollide>true</selfCollide>
     </gazebo>
     <gazebo reference="link_2_v1_1">
-        <material>Gazebo/Silver</material>
+        <material>Gazebo/Black</material>
         <mu1>0.2</mu1>
         <mu2>0.2</mu2>
         <selfCollide>true</selfCollide>
     </gazebo>
     <gazebo reference="link_3_v2_1">
-        <material>Gazebo/Silver</material>
+        <material>Gazebo/Black</material>
         <mu1>0.2</mu1>
         <mu2>0.2</mu2>
         <selfCollide>true</selfCollide>
     </gazebo>
     <gazebo reference="eef_base_v1_1">
-        <material>Gazebo/Silver</material>
+        <material>Gazebo/Black</material>
         <mu1>0.2</mu1>
         <mu2>0.2</mu2>
         <selfCollide>true</selfCollide>
     </gazebo>
     <gazebo reference="left_claw_v3_1">
-        <material>Gazebo/Silver</material>
+        <material>Gazebo/DarkGrey</material>
         <mu1>0.2</mu1>
         <mu2>0.2</mu2>
         <selfCollide>true</selfCollide>
     </gazebo>
     <gazebo reference="right_claw_v3_1">
-        <material>Gazebo/Silver</material>
+        <material>Gazebo/DarkGrey</material>
         <mu1>0.2</mu1>
         <mu2>0.2</mu2>
         <selfCollide>true</selfCollide>
     </gazebo>
     <gazebo reference="ydlidar_x4_v1_1">
-        <material>Gazebo/Silver</material>
+        <material>Gazebo/Blue</material>
         <mu1>0.2</mu1>
         <mu2>0.2</mu2>
         <selfCollide>true</selfCollide>
@@ -282,7 +282,7 @@
     <gazebo reference="ydlidar_x4_v1_1">
         <sensor name="head_hokuyo_sensor" type="ray">
             <pose>0 0 0 0 0 0</pose>
-            <visualize>true</visualize>
+            <visualize>false</visualize>
             <update_rate>40</update_rate>
             <ray>
                 <scan>
@@ -356,9 +356,44 @@
             </plugin>
         </sensor>
     </gazebo>
+    <!-- <gazebo>
+        <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
 
+            <updateRate>50</updateRate>
+
+            <leftJoint>front_left_drive</leftJoint>
+
+            <rightJoint>front_right_drive</rightJoint>
+
+            <wheelSeparation>0.48</wheelSeparation>
+
+            <wheelDiameter>0.2</wheelDiameter>
+
+            <wheelAcceleration>1.0</wheelAcceleration>
+
+            <wheelTorque>20</wheelTorque>
+
+            <commandTopic>cmd_vel</commandTopic>
+
+            <odometryTopic>odom</odometryTopic>
+
+            <odometryFrame>odom</odometryFrame>
+
+            <robotBaseFrame>base_link</robotBaseFrame>
+
+            <odometrySource>1</odometrySource>
+
+            <publishWheelTF>false</publishWheelTF>
+
+            <publishOdom>true</publishOdom>
+
+            <publishWheelJointState>true</publishWheelJointState>
+
+            <legacyMode>false</legacyMode>
+        </plugin>
+    </gazebo> -->
     <gazebo>
-        <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+        <plugin filename="libgazebo_ros_skid_steer_drive.so" name="skid_steer_drive_controller">
             <updateRate>100.0</updateRate>
             <robotNamespace>/</robotNamespace>
             <leftFrontJoint>front_left_drive</leftFrontJoint>
@@ -375,8 +410,6 @@
             <broadcastTF>true</broadcastTF>
         </plugin>
     </gazebo>
-
-
     <link name="base_link">
         <inertial>
             <origin rpy="0 0 0" xyz="0.01610508467278378 -0.048512745473199226 0.353121746597701" />

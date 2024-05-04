@@ -42,3 +42,31 @@ gripper_controller:
       d: 1
       i: 1
       i_clamp: 1
+steering_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - back_left_steer
+    - back_right_steer
+    - front_left_steer
+    - front_right_steer
+  gains:
+    back_left_steer:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    back_right_steer:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    front_left_steer:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    front_right_steer:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1

@@ -15,3 +15,12 @@ controller_list:
     joints:
       - left_grip
       - right_grip
+  - name: steering_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - back_left_steer
+      - back_right_steer
+      - front_left_steer
+      - front_right_steer
