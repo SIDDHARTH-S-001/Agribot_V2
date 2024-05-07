@@ -53,21 +53,25 @@ imgpointsL= []
 # Start calibration from the camera
 print('Starting calibration for the 2 cameras... ')
 # Call all saved images
-for i in range(0,20):   # Put the amount of pictures you have taken for the calibration inbetween range(0,?) wenn starting from the image number 0
+for i in range(0,21):   # Put the amount of pictures you have taken for the calibration inbetween range(0,?) wenn starting from the image number 0
     t= str(i)
-    ChessImaR= cv2.imread('images/chessboard-R'+t+'.png',0)    # Right side
-    ChessImaL= cv2.imread('images/chessboard-L'+t+'.png',0)    # Left side
+    ChessImaR= cv2.imread('/home/siddharth/capstone_ws/src/Agribot_V2/agribot_v4_moveit/script/C270/stereo/images/chessboard-R'+t+'.png',0)    # Right side
+    print("taken image", i)
+    ChessImaL= cv2.imread('/home/siddharth/capstone_ws/src/Agribot_V2/agribot_v4_moveit/script/C270/stereo/images/chessboard-L'+t+'.png',0)    # Left side
     retR, cornersR = cv2.findChessboardCorners(ChessImaR,
-                                               (9,6),None)  # Define the number of chees corners we are looking for
+                                               (8,4),None)  # Define the number of chees corners we are looking for
     retL, cornersL = cv2.findChessboardCorners(ChessImaL,
-                                               (9,6),None)  # Left side
+                                               (8,4),None)  # Left side
+    print(retR, retL)
     if (True == retR) & (True == retL):
         objpoints.append(objp)
         cv2.cornerSubPix(ChessImaR,cornersR,(11,11),(-1,-1),criteria)
         cv2.cornerSubPix(ChessImaL,cornersL,(11,11),(-1,-1),criteria)
+        cv2.drawChessboardCorners(ChessImaR, (7,3), cv2.cornerSubPix(ChessImaR,cornersR,(11,11),(-1,-1),criteria), True)
         imgpointsR.append(cornersR)
         imgpointsL.append(cornersL)
 
+print('img loads done')
 # Determine the new values for different parameters
 #   Right Side
 retR, mtxR, distR, rvecsR, tvecsR = cv2.calibrateCamera(objpoints,
@@ -161,7 +165,7 @@ wls_filter.setSigmaColor(sigma)
 
 # Call the two cameras
 CamR= cv2.VideoCapture(0)   # Wenn 0 then Right Cam and wenn 2 Left Cam
-CamL= cv2.VideoCapture(1)
+CamL= cv2.VideoCapture(2)
 
 while True:
     # Start Reading Camera images
