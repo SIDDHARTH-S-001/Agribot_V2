@@ -7,7 +7,8 @@
 
   <!-- <include file="$(find agribot_v4_moveit)/launch/display.launch"/> -->
 
-  <include file= "$(find agribot_v4_moveit)/launch/gmapping.launch"/>
+  <!-- <include file= "$(find agribot_v4_moveit)/launch/gmapping.launch"/> -->
++
 
   <include file="$(find agribot_v4_moveit)/launch/move_base.launch">
     <arg name="move_forward_only" value="$(arg move_forward_only)"/>
